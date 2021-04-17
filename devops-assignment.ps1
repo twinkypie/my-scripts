@@ -1,4 +1,5 @@
 # In order for this script to run, the target computer must have it's execution policy set to RemoteSigned
+# Run `Set-ExecutionPolicy RemoteSigned` into a Powershell ran as Administrator
 
 # Installing Active Directory to Windows Server 2016
 Install-windowsfeature -name AD-Domain-Services -IncludeManagementTools
