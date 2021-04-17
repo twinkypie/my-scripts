@@ -14,5 +14,5 @@ sudo service mysql start
 echo "mount the 10gb drive"
 sudo mount /dev/xvdf1/ /mnt/extra-d
 
-echo"cat into file located in the mounted drive"
+echo "cat into file located in the mounted drive"
 cat /mnt/extra-d/test.txt
