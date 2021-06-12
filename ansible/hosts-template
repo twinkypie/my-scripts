@@ -58,10 +58,10 @@ ubuntu-plagues
 ansible_user='malgus'
 ansible_become=yes
 ansible_become_method=sudo
-ansible_become_pass=P@d!1609F$
+ansible_become_pass=
 
 [malgus:vars]
 ansible_user='malgus'
 ansible_become=yes
 ansible_become_method=sudo
-ansible_become_pass=P@d!1609F$
+ansible_become_pass=
