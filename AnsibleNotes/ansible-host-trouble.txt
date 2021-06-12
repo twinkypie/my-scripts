@@ -1,0 +1,20 @@
+PROBLEM:
+
+Why did I get an error when I tried using the install-tmux ansible playbook?
+
+I was getting an error when running my install-tmux.yml ansible playbook that said I was trying to connect to ubuntu-malgus with my dan@ubuntu-master.
+Wihtin the /etc/ansible/hosts file I had a host grouping as:
+[malgus]
+ubuntu-malgus
+
+when the error occured. When i switched to:
+[malgus]
+192.168.0.102 (whatever ip is associated to malgus)
+
+I was able to run the playbook. I'm assuming that worked since the 192.168.0.102 is under the [sith] group and is has variablables defined to sign into the sudo user account.
+
+I had iniatially copy and pasted those same variables for [malgus] however I typed [plagues:vars] instead of [malgus:vars]
+
+SOLUTION:
+
+I just renamed [plagues:vars] to [malgus:vars] and my install-tmux.yml playbook worked

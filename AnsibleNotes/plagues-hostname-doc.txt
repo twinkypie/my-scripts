@@ -1,0 +1,60 @@
+Troubleshooting my ubuntu-plagues VM box
+I'm putting every text entry into this file via the 'echo' command in an effort to not use the GUI
+So after running a 'cat /etc/hosts' command through Ansible, I noticed that one of my Ubuntu VMs has the wrong hostname as a result of cloning the machine and not properly changing the hostname
+ 
+Running the command 'ansible sith -m command -a hostname' tells me this:
+192.168.0.102 | CHANGED | rc=0 >>
+ubuntu-malgus
+192.168.0.176 | CHANGED | rc=0 >>
+ubuntu-plagues
+ 
+Checking the '/etc/hosts' however gives me a different result:
+192.168.0.176 | CHANGED | rc=0 >>
+127.0.0.1	localhost
+127.0.1.1	ubuntu-malgus
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+
+192.168.0.102 | CHANGED | rc=0 >>
+127.0.0.1	localhost
+127.0.1.1	ubuntu-malgus
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ 
+it's a little hard to see but the hostname of 192.168.0.176 and 192.169.0.102 are the same (look next to 127.0.1.1)
+ 
+So now I have to log into the corresponding VM and change it's etc file
+ 
+I SSH'ed to the corersponding VM and now the hostname is correct
+ 
+192.168.0.102 | CHANGED | rc=0 >>
+127.0.0.1	localhost
+127.0.1.1	ubuntu-malgus
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+
+192.168.0.176 | CHANGED | rc=0 >>
+127.0.0.1	localhost
+127.0.1.1	ubuntu-plagues
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters

@@ -1,0 +1,75 @@
+ansible directory
+/etc/ansible/
+
+ansible sith -m command -a hostname
+192.168.0.102 | CHANGED | rc=0 >>
+ubuntu-malgus
+192.168.0.176 | CHANGED | rc=0 >>
+ubuntu-plagues
+-------
+ansible sith -m command -a date
+192.168.0.102 | CHANGED | rc=0 >>
+Sun 28 Feb 2021 07:33:03 PM PST
+192.168.0.176 | CHANGED | rc=0 >>
+Sun 28 Feb 2021 07:33:03 PM PST
+-----
+ansible localhost -m command -a hostname
+localhost | CHANGED | rc=0 >>
+ubuntu-master
+------
+ansible all -m ping
+192.168.0.176 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+192.168.0.102 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+-------
+Basic Ansible Privilege Escalation
+# as bruce (assumption: bruce is non-sudo)
+$ ansible all -m ping -u bruce
+# as bruce, sudoing to root (sudo is default method)
+$ ansible all -m ping -u bruce --become
+# as bruce, sudoing to batman
+$ ansible all -m ping -u bruce --become --become-user batman
+------------
+Runs the equivalent of 'apt-get update' before the operation
+ansible sith -m apt -a "update_cache=yes"
+192.168.0.102 | CHANGED => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "cache_update_time": 1614635503,
+    "cache_updated": true,
+    "changed": true
+}
+192.168.0.176 | CHANGED => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "cache_update_time": 1614635503,
+    "cache_updated": true,
+    "changed": true
+}
+-----------------------
+Entering commands with spaces/arguments/flags in ansible
+ansible malgus -m command -a 'python3 --version'
+ubuntu-malgus | CHANGED | rc=0 >>
+Python 3.8.5
+-------------------------
+When using ansible to create users, if I want to add them into a group, then group must exist
+For example:
+
+ansible.builtin.user:
+  name: daniel
+  group: beans
+
+will not work unless the "beans" group already exists in the target 
