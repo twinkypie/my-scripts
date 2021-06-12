@@ -35,4 +35,4 @@ client.on('message', message => {
 
 
 //Last line of the file
-client.login('ODI2OTI1MDU5MjQyNTkwMjQ5.YGTj-Q.paCYyt8uh0ii8ffMspI478QizQk');
+client.login('');
