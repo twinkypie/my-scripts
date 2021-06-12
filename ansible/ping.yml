@@ -1,0 +1,6 @@
+---
+- hosts: sith
+  gather_facts: false
+  become: true
+  tasks:
+    - ping:

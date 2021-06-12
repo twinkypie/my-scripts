@@ -1,0 +1,10 @@
+- name: vim check
+  hosts: sith
+  remote_user: malgus
+  tasks:
+    - name: ensure vim is there
+      apt: 
+        name: vim
+        state: latest
+  
+  

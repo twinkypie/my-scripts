@@ -1,0 +1,12 @@
+- name: ilovenano
+  hosts: sith
+  remote_user: malgus
+  tasks:
+  - name: ensure vim is there
+    apt:
+      name: vim
+      state: latest
+  become: yes 
+  ssh_pass: malgus
+  become_pass: P@d!1609F$  
+

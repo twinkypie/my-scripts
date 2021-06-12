@@ -1,0 +1,9 @@
+---
+- hosts: malgus
+  tasks:
+    - name: add the user Baego Santos and creates home dir
+      ansible.builtin.user:
+        name: baego
+        shell: /bin/bash
+      
+

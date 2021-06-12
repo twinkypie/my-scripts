@@ -1,0 +1,12 @@
+---
+- hosts: malgus
+  tasks:
+    - name: Ensure development group exists
+      ansible.builtin.group:
+        name: dev
+        state: present
+    - name: Add user "baego" to "dev" group
+      ansible.builtin.user:
+        name: baegosan
+        shell: /bin/bash
+        group: dev

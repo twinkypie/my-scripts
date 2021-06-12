@@ -1,0 +1,7 @@
+---
+- hosts: plagues
+  tasks:
+    - name:
+      apt:
+        name: apache2
+        state: latest

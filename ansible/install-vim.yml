@@ -1,0 +1,8 @@
+---
+- hosts: sith
+  tasks:
+    - name: Install latest version of Vim
+      apt:
+        name: vim
+        state: latest
+

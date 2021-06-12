@@ -1,0 +1,7 @@
+---
+- hosts: malgus
+  tasks:
+    - name: Install the latest version of Tmux
+      apt:
+        name: tmux
+        state: latest

@@ -1,0 +1,24 @@
+---
+- hosts: malgus
+  tasks:
+    - name: Run the equivalent of "apt-get update" as a separate step
+      apt:
+        update_cache: yes
+    - name: Remove useless packages from the cache
+      apt:
+         autoclean: yes
+    - name: Remove dependencies that are no longer required
+      apt:
+        autoremove: yes
+    - name: Install python3
+      apt:
+        name: python3
+        state: latest
+    - name: Install python3-pip
+      apt:
+        name: python3-pip
+        state: latest
+    - name: Install Python Interactive Development Environment (IDLE)
+      apt:
+        name: idle3
+        state: latest

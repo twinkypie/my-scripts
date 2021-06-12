@@ -1,0 +1,25 @@
+---
+- hosts: malgus
+  tasks:
+    - name: Create the Development group
+      ansible.builtin.group:
+        name: dev
+        state: present
+    - name: Create the Quality Assurance group
+      ansible.builtin.group:
+        name: qualass
+        state: present
+    - name: Create the Information Technology group
+      ansible.builtin.group:
+        name: infotech
+        state: present
+    - name: Create the Human Relations group
+      ansible.builtin.group:
+        name: humrel
+        state: present
+    - name: Create the Development Operations group
+      ansible.builtin.group:
+        name: devops
+        state: present
+
+
