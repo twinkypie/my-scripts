@@ -58,7 +58,7 @@ async def ban(ctx, member : discord.Member, *, reason= None):
 
 
 # last line of code
-client.run("ODI2OTI1MDU5MjQyNTkwMjQ5.YGTj-Q.paCYyt8uh0ii8ffMspI478QizQk")
+client.run("")
 
 
 
