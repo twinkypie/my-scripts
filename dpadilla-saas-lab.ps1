@@ -1,10 +1,16 @@
+# Install Active Directory
+Add-WindowsFeature Ad-Domain-Services
+
+# Installing Ad Forest and specifying domain name
+Install-ADDSForest -DomainName tekperfect.corp -InstallDNS
+
 # Creating AD groups (different from local groups)
-New-ADGroup -Name "Human Resources" -SamAccountName HR -DisplayName "HR"
-New-ADGroup -Name "Information Technology" -SamAccountName IT -DisplayName "IT"
-New-ADGroup -Name "Finance" -SamAccountName Finance -DisplayName "Finance"
-New-ADGroup -Name "Marketing" -SamAccountName Marketing -DisplayName "Marketing"
-New-ADGroup -Name "Sales" -SamAccountName Sales -DisplayName "Sales"
-New-ADGroup -Name "Security" -SamAccountName Security -DisplayName "Security"
+New-ADGroup -Name "Human Resources" -SamAccountName HR -DisplayName "HR" -GroupCategory Security -GroupScope Global 
+New-ADGroup -Name "Information Technology" -SamAccountName IT -DisplayName "IT" -GroupCategory Security -GroupScope Global 
+New-ADGroup -Name "Finance" -SamAccountName Finance -DisplayName "Finance" -GroupCategory Security -GroupScope Global 
+New-ADGroup -Name "Marketing" -SamAccountName Marketing -DisplayName "Marketing" -GroupCategory Security -GroupScope Global 
+New-ADGroup -Name "Sales" -SamAccountName Sales -DisplayName "Sales" -GroupCategory Security -GroupScope Global 
+New-ADGroup -Name "Security" -SamAccountName Security -DisplayName "Security" -GroupCategory Security -GroupScope Global 
 
 
 # Creating AD account (different from local accounts)
